@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "maxtemp"
+dynamic = ["version"]
+description = "Next-day maximum temperature forecasting for European cities with neural networks"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Andrii Cherkasov" }]
+requires-python = ">=3.10"
+keywords = ["weather", "forecasting", "deep-learning", "keras", "tensorflow", "regression"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+]
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "scikit-learn>=1.4",
+    "matplotlib>=3.8",
+    "tensorflow>=2.16",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-cov>=5", "ruff>=0.6"]
+notebook = ["jupyter", "seaborn>=0.13"]
+
+[project.scripts]
+maxtemp = "maxtemp.cli:main"
+
+[project.urls]
+Repository = "https://github.com/CherkasovAndrii/Python_Weather_Prediction_Max_Temp"
+
+[tool.setuptools.dynamic]
+version = { attr = "maxtemp.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-include = ["*.ipynb"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "NPY", "RUF"]
+ignore = ["N803", "N806"]  # X_train etc. follow the scikit-learn naming convention
+
+[tool.ruff.lint.per-file-ignores]
+"notebooks/*" = ["E402"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = ["slow: trains a neural network (deselect with -m 'not slow')"]
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.coverage.run]
+source = ["maxtemp"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
