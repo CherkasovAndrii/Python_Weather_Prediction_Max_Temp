@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Environments
+.venv/
+venv/
+env/
+.env
+
+# Tooling
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+.ipynb_checkpoints/
+
+# Trained models (re-create with `maxtemp train`)
+models/
+*.keras
+*.h5
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

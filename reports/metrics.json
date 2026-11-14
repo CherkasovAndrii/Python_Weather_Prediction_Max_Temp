@@ -1,0 +1,120 @@
+{
+  "version": "1.0.0",
+  "config": {
+    "cities": [
+      "ROMA",
+      "BUDAPEST",
+      "STOCKHOLM"
+    ],
+    "horizon_days": 1,
+    "seed": 42,
+    "split": {
+      "train_end": "2006-12-31",
+      "val_end": "2007-12-31"
+    },
+    "model": {
+      "hidden_units": [
+        64,
+        32
+      ],
+      "dropout_rate": 0.1,
+      "l2": 0.001,
+      "learning_rate": 0.0003,
+      "batch_size": 32,
+      "max_epochs": 500,
+      "patience": 30,
+      "mc_samples": 100
+    }
+  },
+  "data_cleaning": {
+    "invalid_values_replaced": {
+      "STOCKHOLM_cloud_cover": 2,
+      "STOCKHOLM_pressure": 3,
+      "STOCKHOLM_sunshine": 29,
+      "TOURS_pressure": 1
+    }
+  },
+  "results": {
+    "ROMA": {
+      "split_sizes": {
+        "train": 2557,
+        "val": 365,
+        "test": 731
+      },
+      "n_features": 165,
+      "persistence": {
+        "rmse": 2.1950634828110216,
+        "mae": 1.620246238030096,
+        "r2": 0.9214716959450271
+      },
+      "ridge": {
+        "rmse": 1.9312508127643109,
+        "mae": 1.488979996800706,
+        "r2": 0.9392131823369982
+      },
+      "mlp": {
+        "rmse": 2.0399856464587236,
+        "mae": 1.548166758515114,
+        "r2": 0.9321755513672415,
+        "interval_95_coverage": 0.652530779753762,
+        "mean_uncertainty_std": 0.8923248052597046,
+        "best_epoch": 205,
+        "epochs_trained": 235
+      }
+    },
+    "BUDAPEST": {
+      "split_sizes": {
+        "train": 2557,
+        "val": 365,
+        "test": 731
+      },
+      "n_features": 165,
+      "persistence": {
+        "rmse": 2.804349757961635,
+        "mae": 2.1381668946648427,
+        "r2": 0.9170306456843513
+      },
+      "ridge": {
+        "rmse": 2.1409738148447737,
+        "mae": 1.695861138768472,
+        "r2": 0.951641138689084
+      },
+      "mlp": {
+        "rmse": 2.287754843053848,
+        "mae": 1.7750891529910378,
+        "r2": 0.9447830617531618,
+        "interval_95_coverage": 0.5909712722298222,
+        "mean_uncertainty_std": 0.9574171900749207,
+        "best_epoch": 183,
+        "epochs_trained": 213
+      }
+    },
+    "STOCKHOLM": {
+      "split_sizes": {
+        "train": 2557,
+        "val": 365,
+        "test": 731
+      },
+      "n_features": 165,
+      "persistence": {
+        "rmse": 2.3178867917149377,
+        "mae": 1.782900136798906,
+        "r2": 0.9276072795898828
+      },
+      "ridge": {
+        "rmse": 1.9644592362911897,
+        "mae": 1.5534204390395514,
+        "r2": 0.9480008196019415
+      },
+      "mlp": {
+        "rmse": 2.1749235636154656,
+        "mae": 1.7155097212810604,
+        "r2": 0.9362619969336435,
+        "interval_95_coverage": 0.5909712722298222,
+        "mean_uncertainty_std": 0.9292716979980469,
+        "best_epoch": 50,
+        "epochs_trained": 80
+      }
+    }
+  }
+}
